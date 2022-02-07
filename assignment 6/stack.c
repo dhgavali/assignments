@@ -135,7 +135,6 @@ void infix_to_postfix(char infix[], char postfix[])
     postfix[j] = '\0';
 }
 
-/* string reverse operation */
 void strrevs(char str[])
 {
     int i = 0, j = 0;
@@ -229,17 +228,12 @@ void postfixSolve(char str[])
     {
         if (isdigit(str[i]))
         {
-            /*
-             * if the i/p char is digit, parse
-             * character by character to get
-             * complete operand
-             */
+
             data = (data == -1) ? 0 : data;
             data = (data * 10) + (str[i] - 48);
             continue;
         }
 
-        /* push the operator into the stack */
         if (data != -1)
         {
             push(data);
@@ -247,12 +241,7 @@ void postfixSolve(char str[])
 
         if (str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/')
         {
-            /*
-             * if the i/p character is an operator,
-             * then pop two elements from the stack,
-             * apply operator and push the result into
-             * the stack
-             */
+
             operand2 = pop();
             operand1 = pop();
             if (operand1 == -1 || operand2 == -1)
@@ -313,7 +302,6 @@ int main()
         case 2:
             printf("Enter infix Expression:");
             scanf("%s", str);
-            // str[strlen(str) - 1] = '\0';
             strrev(str);
             infix_to_prefix(str, output);
             strrev(output);
